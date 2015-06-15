@@ -7,10 +7,10 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-
+//一对一，单线程
 public class EchoServer {
 
-	private int port = 8000;
+	private int port = 9999;
 	private ServerSocket serverSocket;
 	
 	public EchoServer() throws IOException{

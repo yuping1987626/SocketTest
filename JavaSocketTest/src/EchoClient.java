@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class EchoClient {
 
-	private int port = 8000;
+	private int port = 9999;
 	private String host = "localhost";
 	private Socket socket;
 	
