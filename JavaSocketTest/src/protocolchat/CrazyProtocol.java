@@ -3,17 +3,17 @@ package protocolchat;
 public interface CrazyProtocol {
 
 	int PROTOCOL_LEN = 2;
-	//用户名标志
+	//user name
 	String USER_ROUND = "&@";
-	//私聊标志
+	//private chat 
 	String PRIVATE_ROUND = "*《";
-	//用户名重复标志
+	//name repeat
 	String NAME_REP = "%?";
-	//登陆成功标志
+	//login success
 	String LOGIN_SUCCESS = "#!";
-	//用户和消息分隔符
+	//split user and message
 	String SPILT_SIGN = "~~";
-	//公共消息
+	//public message
 	String MSG_ROUND = "^^";
 	
 }

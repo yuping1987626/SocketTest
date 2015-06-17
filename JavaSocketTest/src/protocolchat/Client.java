@@ -27,7 +27,7 @@ public class Client {
 	public void init(){
 		
 		try {
-			//初始化键盘输入流
+			//Keyboard input
 			keyIn = new BufferedReader(new InputStreamReader(System.in));
 			socket = new Socket("127.0.0.1",SERVER_PORT);
 			ps = new PrintStream(socket.getOutputStream());
@@ -35,17 +35,17 @@ public class Client {
 			        
 			String tip = "";
 			while(true){
-				String userName = JOptionPane.showInputDialog(tip+"输入用户名：");
-				//在用户名前后增加协议字符串后发送
+				String userName = JOptionPane.showInputDialog(tip+"user name：");
+				
 				ps.println(CrazyProtocol.USER_ROUND + userName +CrazyProtocol.USER_ROUND);
 				ps.flush();
 				String result = brServer.readLine();
-				//如果用户名重复，则开始下次循环
+				//UserName Repeat!
 				if(result.equals(CrazyProtocol.NAME_REP)){
-					tip = "用户名重复，请重新输入";
+					tip = "UserName Repeat, please again";
 					continue;
 				}
-				//如果服务器返回成功，则结束循环
+				
 				if(result.equals(CrazyProtocol.LOGIN_SUCCESS)){
 					break;
 				}
@@ -53,24 +53,24 @@ public class Client {
 			new ClientThread(brServer).start();
 			
 		} catch (UnknownHostException e) {
-			System.out.println("找不到远程服务器，请确定服务器是否启动！！！");
+			System.out.println("Can not find remote Server！！！");
 			closeRs();
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("网络异常，请重新登陆！！！");
+			System.out.println("Network Exception, please login agin！！！");
 			closeRs();
 			e.printStackTrace();
 		}
 		
 	}
 	
-	//读取键盘输出
+	
 	private void readAndSend(){
 		
 		try {
 			String line = null;
 			while((line = keyIn.readLine()) != null){
-				//如果发送的信息中有冒号且以"/"开头
+				//if message begin with "/"
 				if(line.indexOf(":")>0 && line.startsWith("/")){
 					String lines = line.substring(1);
 					System.out.println(line);
@@ -84,7 +84,7 @@ public class Client {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("网络异常，请重新登陆！！！");
+			System.out.println("Network Exception！！！");
 			closeRs();
 			e.printStackTrace();
 		}

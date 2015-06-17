@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class ClientThread extends Thread{
 	
-	//该客户端处理线程负责处理的输入流
+	
 	BufferedReader br = null;
 	public ClientThread(BufferedReader br){
 		this.br = br;
